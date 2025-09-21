@@ -10,6 +10,7 @@ import { ChatsCard } from "./_components/chats-card";
 import { OverviewCardsGroup } from "./_components/overview-cards";
 import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import { RegionLabels } from "./_components/region-labels";
+import { MessageCircle } from "lucide-react";
 
 type PropsType = {
   searchParams: Promise<{
@@ -55,6 +56,15 @@ export default async function Home({ searchParams }: PropsType) {
           <ChatsCard />
         </Suspense> */}
       </div>
+      {/* Chatbot Button */}
+      <a
+        href="https://psi-chat-mauve.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 rounded-full bg-blue-600 text-white p-4 shadow-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </a>
     </>
   );
 }
