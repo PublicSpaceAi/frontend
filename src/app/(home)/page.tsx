@@ -58,7 +58,7 @@ export default async function Home({ searchParams }: PropsType) {
       </div>
       {/* Chatbot Button */}
       <a
-        href="https://psi-chat-mauve.vercel.app/"
+        href="https://chatbot-zeta-dun.vercel.app/"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 rounded-full bg-blue-600 text-white p-4 shadow-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
