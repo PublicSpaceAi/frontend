@@ -57,7 +57,7 @@ export function Header() {
         {/* <Notification /> */}
 
         <div className="shrink-0">
-          {/* <UserInfo /> */}
+          <UserInfo />
         </div>
       </div>
     </header>
