@@ -10,10 +10,8 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // TODO: Add your own credentials logic here
-        // This is a placeholder that you should replace with your actual authentication
+        // Replace with your own authentication logic
         if (credentials?.email && credentials?.password) {
-          // Example: verify against your database
           return {
             id: "1",
             email: credentials.email,
@@ -24,17 +22,21 @@ const handler = NextAuth({
       },
     }),
   ],
+
   pages: {
     signIn: "/login",
   },
+
   callbacks: {
     async redirect({ url, baseUrl }) {
-      // Redirect to dashboard after successful login
       if (url.startsWith("/")) return `${baseUrl}${url}`
       else if (new URL(url).origin === baseUrl) return url
-      return baseUrl + "/dashboard"
+      return `${baseUrl}/dashboard`
     },
   },
+
+  // 🔐 Required for production
+  secret: process.env.NEXTAUTH_SECRET,
 })
 
 export { handler as GET, handler as POST }
