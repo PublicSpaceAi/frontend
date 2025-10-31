@@ -21,7 +21,7 @@ environment:
 # Build configuration
 build:
   # Use the Dockerfile for building
-  dockerfile: "./Dockerfile"
+  dockerfile: "Dockerfile"
   
   # Build context
   context: "."
