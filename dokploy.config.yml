@@ -1,0 +1,74 @@
+# Dokploy Deployment Configuration
+# This file contains the deployment settings for the Next.js application
+
+# Application name
+app_name: "PS-AI Frontend"
+
+# Application type
+type: "docker"
+
+# Port mapping
+ports:
+  - "3002:3002"
+
+# Environment variables
+environment:
+  NODE_ENV: "production"
+  NEXTAUTH_URL: "${NEXTAUTH_URL}"
+  NEXTAUTH_SECRET: "${NEXTAUTH_SECRET}"
+  NEXT_PUBLIC_SITE_URL: "${NEXT_PUBLIC_SITE_URL}"
+
+# Build configuration
+build:
+  # Use the Dockerfile for building
+  dockerfile: "./Dockerfile"
+  
+  # Build context
+  context: "."
+
+# Deployment settings
+deploy:
+  # Number of replicas
+  replicas: 1
+  
+  # Resource limits
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  
+  # Health check
+  healthCheck:
+    enabled: true
+    path: "/"
+    interval: 30
+    timeout: 10
+    retries: 3
+    startPeriod: 40
+
+# Volume mounts (optional)
+volumes: []
+
+# Network configuration
+network:
+  # Expose to public internet
+  expose: true
+  
+  # Domain (if using custom domain)
+  domain: null
+  
+  # SSL/TLS
+  ssl: true
+
+# Restart policy
+restartPolicy: "unless-stopped"
+
+# Logging
+logging:
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
