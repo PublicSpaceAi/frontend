@@ -1,7 +1,11 @@
+'use client';
+
 import { EmotionGraph } from "@/components/Charts/payments-overview";
 import { UsedDevices } from "@/components/Charts/used-devices";
 // import { WeeksProfit } from "@/components/Charts/weeks-profit"; // Remove this line
 import VideoEmbed from "@/components/VideoEmbed"; // Ensure you import VideoEmbed correctly
+import TodaysTimetable from "@/components/TimeTable/TodaysTimetable";
+import TodoListWidget from "@/components/TimeTable/TodoListWidget";
 import { TopChannels } from "@/components/Tables/top-channels";
 import { TopChannelsSkeleton } from "@/components/Tables/top-channels/skeleton";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
@@ -12,15 +16,8 @@ import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import { RegionLabels } from "./_components/region-labels";
 import { MessageCircle } from "lucide-react";
 
-type PropsType = {
-  searchParams: Promise<{
-    selected_time_frame?: string;
-  }>;
-};
-
-export default async function Home({ searchParams }: PropsType) {
-  const { selected_time_frame } = await searchParams;
-  const extractTimeFrame = createTimeFrameExtractor(selected_time_frame);
+export default function Home() {
+  const extractTimeFrame = (key: string) => key;
 
   return (
     <>
@@ -35,8 +32,14 @@ export default async function Home({ searchParams }: PropsType) {
           // timeFrame={extractTimeFrame("payments_overview")?.split(":")[1]}
         />
 
-        {/* Replace WeeksProfit with VideoEmbed */}
+        {/* Replace WeeksProfit with VideoEmbed, TodaysTimetable and TodoListWidget */}
         <VideoEmbed className="col-span-12 xl:col-span-5" />
+
+        {/* Today's Timetable */}
+        <TodaysTimetable />
+
+        {/* Todo List Widget */}
+        <TodoListWidget />
 
         {/* <UsedDevices
           className="col-span-12 xl:col-span-5"

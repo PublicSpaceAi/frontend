@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronUpIcon } from "@/assets/icons";
+import { DefaultUserAvatar, DefaultUserAvatarSmall } from "@/assets/default-user-avatar";
 import {
   Dropdown,
   DropdownContent,
@@ -11,7 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
-import { LogOutIcon, SettingsIcon, UserIcon } from "./icons";
+import { LogOutIcon } from "./icons";
 
 export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,6 @@ export function UserInfo() {
   }
 
   const user = session.user;
-  const userImage = user.image || "/images/user/user-03.png";
   const userName = user.name || "User";
   const userEmail = user.email || "user@example.com";
 
@@ -60,15 +60,19 @@ export function UserInfo() {
 
         <div className="flex items-center gap-3 px-3 py-2">
           <div className="relative">
-            <Image
-              src={userImage}
-              className="h-10 w-10 rounded-full object-cover border-2 border-primary/20"
-              alt={`Avatar of ${userName}`}
-              role="presentation"
-              width={40}
-              height={40}
-              priority
-            />
+            {user.image ? (
+              <Image
+                src={user.image}
+                className="h-10 w-10 rounded-full object-cover border-2 border-primary/20"
+                alt={`Avatar of ${userName}`}
+                role="presentation"
+                width={40}
+                height={40}
+                priority
+              />
+            ) : (
+              <DefaultUserAvatarSmall className="h-10 w-10 rounded-full border-2 border-primary/20" />
+            )}
             <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 border-2 border-white dark:border-gray-900"></div>
           </div>
           
@@ -101,14 +105,18 @@ export function UserInfo() {
         <div className="border-b border-stroke dark:border-dark-3 px-4 py-4">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <Image
-                src={userImage}
-                className="h-12 w-12 rounded-full object-cover border-2 border-primary/20"
-                alt={`Avatar for ${userName}`}
-                role="presentation"
-                width={48}
-                height={48}
-              />
+              {user.image ? (
+                <Image
+                  src={user.image}
+                  className="h-12 w-12 rounded-full object-cover border-2 border-primary/20"
+                  alt={`Avatar for ${userName}`}
+                  role="presentation"
+                  width={48}
+                  height={48}
+                />
+              ) : (
+                <DefaultUserAvatar className="h-12 w-12 rounded-full border-2 border-primary/20" />
+              )}
               <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 border-2 border-white dark:border-gray-900"></div>
             </div>
 
@@ -125,23 +133,7 @@ export function UserInfo() {
 
         {/* Menu Items */}
         <div className="p-2 space-y-1">
-          <Link
-            href={"/dashboard/profile"}
-            onClick={() => setIsOpen(false)}
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            <UserIcon className="h-5 w-5 flex-shrink-0" />
-            <span>View Profile</span>
-          </Link>
-
-          <Link
-            href={"/dashboard/pages/settings"}
-            onClick={() => setIsOpen(false)}
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-          >
-            <SettingsIcon className="h-5 w-5 flex-shrink-0" />
-            <span>Settings</span>
-          </Link>
+          {/* View Profile and Settings removed - keeping only logout */}
         </div>
 
         {/* Divider */}

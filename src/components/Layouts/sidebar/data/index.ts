@@ -9,8 +9,8 @@ export const NAV_DATA = [
         icon: Icons.HomeIcon,
         items: [
           {
-            title: "Demo",
-            url: "/",
+            title: "Home",
+            url: "/dashboard",
           },
           {
             title: "Reports",
@@ -20,8 +20,8 @@ export const NAV_DATA = [
       },
       
       {
-        title: "Set Timetable",
-        url: "/timetable",
+        title: "Timetable",
+        url: "/dashboard/timetable",
         icon: Icons.Calendar,
         items: [],
       },

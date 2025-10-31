@@ -1,27 +1,41 @@
+"use client";
+
 import { UploadIcon } from "@/assets/icons";
+import { DefaultUserAvatar } from "@/assets/default-user-avatar";
 import { ShowcaseSection } from "@/components/Layouts/showcase-section";
 import Image from "next/image";
+import { useState } from "react";
 
 export function UploadPhotoForm() {
+  const [userImage, setUserImage] = useState<string | null>(null);
+
   return (
     <ShowcaseSection title="Your Photo" className="!p-7">
       <form>
         <div className="mb-4 flex items-center gap-3">
-          <Image
-            src="/images/user/user-03.png"
-            width={55}
-            height={55}
-            alt="User"
-            className="size-14 rounded-full object-cover"
-            quality={90}
-          />
+          {userImage ? (
+            <Image
+              src={userImage}
+              width={55}
+              height={55}
+              alt="User"
+              className="size-14 rounded-full object-cover"
+              quality={90}
+            />
+          ) : (
+            <DefaultUserAvatar className="size-14 rounded-full" />
+          )}
 
           <div>
             <span className="mb-1.5 font-medium text-dark dark:text-white">
               Edit your photo
             </span>
             <span className="flex gap-3">
-              <button type="button" className="text-body-sm hover:text-red">
+              <button 
+                type="button" 
+                className="text-body-sm hover:text-red"
+                onClick={() => setUserImage(null)}
+              >
                 Delete
               </button>
               <button className="text-body-sm hover:text-primary">
@@ -38,6 +52,12 @@ export function UploadPhotoForm() {
             id="profilePhoto"
             accept="image/png, image/jpg, image/jpeg"
             hidden
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setUserImage(URL.createObjectURL(file));
+              }
+            }}
           />
 
           <label
