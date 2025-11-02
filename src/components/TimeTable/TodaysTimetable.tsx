@@ -54,7 +54,7 @@ const TodaysTimetable = () => {
       <div className="border-b border-gray-200 bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-4 dark:border-gray-700">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-xl font-bold text-white">Today's Schedule</h3>
+            <h3 className="text-xl font-bold text-white">Today&apos;s Schedule</h3>
             <p className="text-sm text-blue-100">{currentDay}</p>
           </div>
           <Calendar className="h-8 w-8 text-white opacity-80" />

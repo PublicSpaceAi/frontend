@@ -114,7 +114,7 @@ const SetTimetable = () => {
         <div className="flex-1">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
-              {selectedDay}'s Schedule
+              {selectedDay}&apos;s Schedule
             </h3>
             <button
               onClick={handleAddSlot}

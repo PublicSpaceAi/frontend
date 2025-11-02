@@ -204,7 +204,7 @@ export default function LoginPage() {
             </>
           ) : (
             <>
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <span
                 onClick={() => {
                   setIsRegistering(true)
