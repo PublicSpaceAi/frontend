@@ -11,6 +11,7 @@ import {
   Clock,
   Award,
   MessageSquare,
+  Eye,
 } from "lucide-react";
 
 export default function FeaturesPage() {
@@ -18,6 +19,12 @@ export default function FeaturesPage() {
   const [isAdmin, setIsAdmin] = useState(true); // You can determine this from user role
 
   const adminFeatures = [
+    {
+      title: "Live Student Monitoring",
+      description: "Track student engagement through face and mood detection to identify support needs",
+      icon: Eye,
+      href: "/dashboard/home",
+    },
     {
       title: "Manage Users",
       description: "Add, edit, and remove students and staff",
@@ -29,12 +36,6 @@ export default function FeaturesPage() {
       description: "View detailed reports and statistics",
       icon: BarChart3,
       href: "/dashboard/reports",
-    },
-    {
-      title: "Settings",
-      description: "Configure system settings",
-      icon: Settings,
-      href: "/dashboard/home/settings",
     },
     {
       title: "Documents",
@@ -49,7 +50,7 @@ export default function FeaturesPage() {
       title: "My Courses",
       description: "View and access your enrolled courses",
       icon: BookOpen,
-      href: "/dashboard/home/courses",
+      href: "/dashboard/courses",
     },
     {
       title: "Timetable",
@@ -61,7 +62,7 @@ export default function FeaturesPage() {
       title: "Grades",
       description: "View your grades and performance",
       icon: Award,
-      href: "/dashboard/home/grades",
+      href: "/dashboard/grades",
     },
     {
       title: "Chatbot",
