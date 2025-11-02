@@ -1,6 +1,0 @@
-{
-  "buildCommand": "docker build -t ps-ai-frontend:latest -f Dockerfile .",
-  "startCommand": "docker run -p 3002:3002 ps-ai-frontend:latest",
-  "port": 3002,
-  "dockerfile": "Dockerfile"
-}

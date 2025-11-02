@@ -5,16 +5,22 @@ export const NAV_DATA = [
     label: "MAIN MENU",
     items: [
       {
+        title: "All Features",
+        icon: Icons.Sparkles,
+        url: "/dashboard/features",
+        items: [],
+      },
+      {
         title: "Dashboard",
         icon: Icons.HomeIcon,
         items: [
           {
             title: "Home",
-            url: "/dashboard",
+            url: "/dashboard/home",
           },
           {
             title: "Reports",
-            url: "/reports",
+            url: "/dashboard/reports",
           },
         ],
       },
@@ -62,7 +68,7 @@ export const NAV_DATA = [
         items: [
           {
             title: "Settings",
-            url: "/pages/settings",
+            url: "/dashboard/home/pages/settings",
           },
         ],
       },

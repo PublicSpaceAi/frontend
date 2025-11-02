@@ -29,7 +29,7 @@ export default function LoginPage() {
       email,
       password,
       redirect: true,
-      callbackUrl: "/dashboard",
+      callbackUrl: "/dashboard/features",
     })
     if (res?.error) setError("Invalid credentials")
     setLoading(false)
@@ -66,7 +66,7 @@ export default function LoginPage() {
         email: regEmail,
         password: regPassword,
         redirect: true,
-        callbackUrl: "/dashboard",
+        callbackUrl: "/dashboard/features",
       })
 
       if (signInRes?.error) {
