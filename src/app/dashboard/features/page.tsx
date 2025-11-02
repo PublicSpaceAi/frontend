@@ -64,10 +64,11 @@ export default function FeaturesPage() {
       href: "/dashboard/home/grades",
     },
     {
-      title: "Messages",
-      description: "Communicate with instructors",
+      title: "Chatbot",
+      description: "AI-powered chatbot powered by GenAI with RAG-based context storage",
       icon: MessageSquare,
-      href: "/dashboard/home/messages",
+      href: "https://public-space-ai-chatbot-hz6mki-d98a47-35-200-243-45.traefik.me/",
+      external: true,
     },
   ];
 
@@ -150,7 +151,13 @@ export default function FeaturesPage() {
               return (
                 <button
                   key={feature.title}
-                  onClick={() => router.push(feature.href)}
+                  onClick={() => {
+                    if (feature.external) {
+                      window.open(feature.href, "_blank");
+                    } else {
+                      router.push(feature.href);
+                    }
+                  }}
                   className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-200 dark:border-gray-700 text-left"
                 >
                   {/* Background accent */}
